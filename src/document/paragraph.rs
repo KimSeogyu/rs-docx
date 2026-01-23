@@ -6,8 +6,8 @@ use std::borrow::{Borrow, Cow};
 use crate::{
     __setter, __xml_test_suites,
     document::{
-        BookmarkEnd, BookmarkStart, CommentRangeEnd, CommentRangeStart, Hyperlink, Run, RunContent,
-        Text, SDT,
+        BookmarkEnd, BookmarkStart, CommentRangeEnd, CommentRangeStart, Deletion, Hyperlink,
+        Insertion, Run, RunContent, Text, SDT,
     },
     formatting::ParagraphProperty,
 };
@@ -55,7 +55,9 @@ pub struct Paragraph<'a> {
         child = "w:hyperlink",
         child = "w:bookmarkStart",
         child = "w:bookmarkEnd",
-        child = "w:sdt"
+        child = "w:sdt",
+        child = "w:ins",
+        child = "w:del"
     )]
     pub content: Vec<ParagraphContent<'a>>,
 }
@@ -147,6 +149,10 @@ pub enum ParagraphContent<'a> {
     BookmarkEnd(BookmarkEnd<'a>),
     #[xml(tag = "w:sdt")]
     SDT(SDT<'a>),
+    #[xml(tag = "w:ins")]
+    Insertion(Insertion<'a>),
+    #[xml(tag = "w:del")]
+    Deletion(Deletion<'a>),
 }
 
 __xml_test_suites!(
