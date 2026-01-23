@@ -10,11 +10,17 @@ pub struct TableCellProperty {
     pub wide: Option<super::TableCellWidth>,
     #[xml(default, child = "w:vAlign")]
     pub v_align: super::VAlign,
+    #[xml(child = "w:gridSpan")]
+    pub grid_span: Option<super::GridSpan>,
+    #[xml(child = "w:vMerge")]
+    pub v_merge: Option<super::VMerge>,
 }
 
 impl TableCellProperty {
     __setter!(v_align: super::VAlign);
     __setter!(wide: Option<super::TableCellWidth>);
+    __setter!(grid_span: Option<super::GridSpan>);
+    __setter!(v_merge: Option<super::VMerge>);
 }
 
 __xml_test_suites!(

@@ -224,6 +224,10 @@ pub struct Inline<'a> {
     pub layout_in_cell: Option<bool>,
     #[xml(attr = "allowOverlap")]
     pub allow_overlap: Option<bool>,
+    #[xml(attr = "wp14:anchorId")]
+    pub anchor_id: Option<Cow<'a, str>>,
+    #[xml(attr = "wp14:editId")]
+    pub edit_id: Option<Cow<'a, str>>,
 
     #[xml(child = "wp:simplePos")]
     pub simple_pos: Option<SimplePos>,

@@ -6,7 +6,7 @@ use std::borrow::{Borrow, Cow};
 use crate::{
     __setter, __xml_test_suites,
     document::{
-        drawing::Drawing, field_char::FieldChar, instrtext::InstrText, r#break::Break,
+        drawing::Drawing, field_char::FieldChar, instrtext::InstrText, pict::Pict, r#break::Break,
         r#break::LastRenderedPageBreak, tab::Tab, text::Text,
     },
     formatting::CharacterProperty,
@@ -73,7 +73,7 @@ pub struct Run<'a> {
         child = "w:cr", //Carriage Return
         child = "w:tab", //Tab Character
         //child = "w:object", //Inline Embedded Object
-        //child = "w:pict", //VML Object
+        child = "w:pict", //VML Object
         child = "w:fldChar", //Complex Field Character
         //child = "w:ruby", //Phonetic Guide
         child = "w:footnoteReference", //Footnote Reference
@@ -227,8 +227,8 @@ pub enum RunContent<'a> {
     Tab(Tab),
     //#[xml(tag = "w:object")]
     //Object(Object<'a>),
-    //#[xml(tag = "w:pict")]
-    //Pict(Pict<'a>),
+    #[xml(tag = "w:pict")]
+    Pict(Pict<'a>),
     #[xml(tag = "w:fldChar")]
     FieldChar(FieldChar),
     //#[xml(tag = "w:ruby")]

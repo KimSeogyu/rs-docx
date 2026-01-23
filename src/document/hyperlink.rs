@@ -18,7 +18,7 @@ pub struct Hyperlink<'a> {
     pub anchor: Option<Cow<'a, str>>,
     #[xml(child = "w:r")]
     /// Link content
-    pub content: Option<Run<'a>>,
+    pub content: Vec<Run<'a>>,
     #[xml(child = "w:dir")]
     // Link can contain a bi-directional embedding layer
     pub bidirectional_embedding: Option<BidirectionalEmbedding<'a>>,
@@ -27,7 +27,7 @@ pub struct Hyperlink<'a> {
 impl<'a> Hyperlink<'a> {
     __setter!(id: Option<Cow<'a, str>>);
     __setter!(anchor: Option<Cow<'a, str>>);
-    __setter!(content: Option<Run<'a>>);
+    __setter!(content: Vec<Run<'a>>);
 
     pub fn text(&self) -> String {
         self.iter_text()
