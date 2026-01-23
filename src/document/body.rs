@@ -94,6 +94,7 @@ impl<'a> Body<'a> {
 /// A set of elements that can be contained in the body
 #[derive(Debug, From, XmlRead, XmlWrite, Clone)]
 #[cfg_attr(test, derive(PartialEq))]
+#[allow(clippy::large_enum_variant)]
 pub enum BodyContent<'a> {
     #[xml(tag = "w:p")]
     Paragraph(Paragraph<'a>),

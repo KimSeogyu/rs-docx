@@ -1,6 +1,6 @@
 [package]
 name = "rs-docx"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["asap0208 <asap0208@gmail.com>"]
 edition = "2021"
 license = "MIT"
