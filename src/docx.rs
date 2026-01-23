@@ -407,7 +407,7 @@ impl<'a> Docx<'a> {
 
         for (file_path, content) in &self.custom_xml {
             let opt = ZipEntryBuilder::new(file_path.as_str().into(), Compression::Deflate);
-            writer.write_entry_whole(opt, &content).await?;
+            writer.write_entry_whole(opt, content).await?;
         }
 
         Ok(writer.close().await?)
