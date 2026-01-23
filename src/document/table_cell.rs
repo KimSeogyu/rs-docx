@@ -89,6 +89,7 @@ impl<'a, T: Into<TableCellContent<'a>>> From<T> for TableCell<'a> {
 
 #[derive(Debug, From, XmlRead, XmlWrite, Clone)]
 #[cfg_attr(test, derive(PartialEq))]
+#[allow(clippy::large_enum_variant)]
 pub enum TableCellContent<'a> {
     #[xml(tag = "w:p")]
     Paragraph(Paragraph<'a>),
