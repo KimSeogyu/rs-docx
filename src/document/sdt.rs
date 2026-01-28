@@ -112,7 +112,9 @@ pub struct SDTContent<'a> {
         child = "w:tbl",
         child = "w:sectPr",
         child = "w:sdt",
-        child = "w:r"
+        child = "w:r",
+        child = "w:bookmarkStart",
+        child = "w:bookmarkEnd"
     )]
     pub content: Vec<BodyContent<'a>>,
 }
@@ -136,6 +138,8 @@ impl<'a> SDTContent<'a> {
                     BodyContent::Sdt(sdt) => Some(sdt.iter_text()),
                     BodyContent::TableCell(_) => None,
                     BodyContent::Run(run) => Some(run.iter_text()),
+                    BodyContent::BookmarkStart(_) => None,
+                    BodyContent::BookmarkEnd(_) => None,
                 })
                 .flatten(),
         )

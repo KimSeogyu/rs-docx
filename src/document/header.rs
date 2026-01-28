@@ -49,6 +49,8 @@ impl<'a> Header<'a> {
                 BodyContent::Sdt(_) => {}
                 BodyContent::TableCell(_) => {}
                 BodyContent::Run(_) => {}
+                BodyContent::BookmarkStart(_) => {}
+                BodyContent::BookmarkEnd(_) => {}
             }
         }
         Ok(())

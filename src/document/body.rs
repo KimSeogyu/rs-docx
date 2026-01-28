@@ -16,8 +16,40 @@ use super::SDT;
 #[xml(tag = "w:body")]
 pub struct Body<'a> {
     /// Specifies the contents of the body of the document.
-    #[xml(child = "w:p", child = "w:tbl", child = "w:sectPr", child = "w:sdt")]
+    #[xml(
+        child = "w:p",
+        child = "w:tbl",
+        child = "w:sectPr",
+        child = "w:sdt",
+        child = "w:bookmarkStart",
+        child = "w:bookmarkEnd"
+    )]
     pub content: Vec<BodyContent<'a>>,
+}
+
+// ... (existing impl block)
+
+/// A set of elements that can be contained in the body
+#[derive(Debug, From, XmlRead, XmlWrite, Clone)]
+#[cfg_attr(test, derive(PartialEq))]
+#[allow(clippy::large_enum_variant)]
+pub enum BodyContent<'a> {
+    #[xml(tag = "w:p")]
+    Paragraph(Paragraph<'a>),
+    #[xml(tag = "w:tbl")]
+    Table(Table<'a>),
+    #[xml(tag = "w:sdt")]
+    Sdt(SDT<'a>),
+    #[xml(tag = "w:sectPr")]
+    SectionProperty(SectionProperty<'a>),
+    #[xml(tag = "w:tc")]
+    TableCell(TableCell<'a>),
+    #[xml(tag = "w:r")]
+    Run(Run<'a>),
+    #[xml(tag = "w:bookmarkStart")]
+    BookmarkStart(crate::document::BookmarkStart<'a>),
+    #[xml(tag = "w:bookmarkEnd")]
+    BookmarkEnd(crate::document::BookmarkEnd<'a>),
 }
 
 impl<'a> Body<'a> {
@@ -37,6 +69,8 @@ impl<'a> Body<'a> {
                 BodyContent::Sdt(sdt) => Some(sdt.text()),
                 BodyContent::TableCell(_) => None,
                 BodyContent::Run(_) => None,
+                BodyContent::BookmarkStart(_) => None,
+                BodyContent::BookmarkEnd(_) => None,
             })
             .collect();
         v.join("\r\n")
@@ -67,6 +101,8 @@ impl<'a> Body<'a> {
                 BodyContent::Sdt(_) => {}
                 BodyContent::TableCell(_) => {}
                 BodyContent::Run(_) => {}
+                BodyContent::BookmarkStart(_) => {}
+                BodyContent::BookmarkEnd(_) => {}
             }
         }
         Ok(())
@@ -89,25 +125,6 @@ impl<'a> Body<'a> {
     //         })
     //         .flatten()
     // }
-}
-
-/// A set of elements that can be contained in the body
-#[derive(Debug, From, XmlRead, XmlWrite, Clone)]
-#[cfg_attr(test, derive(PartialEq))]
-#[allow(clippy::large_enum_variant)]
-pub enum BodyContent<'a> {
-    #[xml(tag = "w:p")]
-    Paragraph(Paragraph<'a>),
-    #[xml(tag = "w:tbl")]
-    Table(Table<'a>),
-    #[xml(tag = "w:sdt")]
-    Sdt(SDT<'a>),
-    #[xml(tag = "w:sectPr")]
-    SectionProperty(SectionProperty<'a>),
-    #[xml(tag = "w:tc")]
-    TableCell(TableCell<'a>),
-    #[xml(tag = "w:r")]
-    Run(Run<'a>),
 }
 
 __xml_test_suites!(
