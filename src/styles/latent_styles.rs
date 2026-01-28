@@ -20,7 +20,7 @@ pub struct LatentStyles<'a> {
     /// Specifies a set of properties.
     #[xml(attr = "w:defLockedState")]
     pub locked_state: Option<bool>,
-    #[xml(attr = "w:defUIPriority")]
+    #[xml(attr = "w:defUIPriority", with = "crate::rounded_float")]
     pub priority: Option<isize>,
     #[xml(attr = "w:defSemiHidden")]
     pub semi_hidden: Option<bool>,

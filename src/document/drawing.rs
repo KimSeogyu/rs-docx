@@ -419,9 +419,9 @@ pub struct FillRect {}
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "wp:extent")]
 pub struct Extent {
-    #[xml(default, attr = "cx")]
-    pub cx: u64,
+    #[xml(default, attr = "cx", with = "crate::rounded_float")]
+    pub cx: isize,
 
-    #[xml(default, attr = "cy")]
-    pub cy: u64,
+    #[xml(default, attr = "cy", with = "crate::rounded_float")]
+    pub cy: isize,
 }

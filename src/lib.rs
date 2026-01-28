@@ -103,8 +103,24 @@ pub use crate::error::{DocxError, DocxResult};
 
 pub mod rounded_float {
     use std::num::ParseFloatError;
+
+    /// Strips common unit suffixes (pt, cm, mm, in, pc, pi, em) from a measurement string.
+    /// Returns the numeric part as a string slice.
+    fn strip_unit_suffix(s: &str) -> &str {
+        let s = s.trim();
+        // Common OOXML/CSS length units
+        const UNITS: &[&str] = &["pt", "cm", "mm", "in", "pc", "pi", "em", "%"];
+        for unit in UNITS {
+            if let Some(stripped) = s.strip_suffix(unit) {
+                return stripped.trim();
+            }
+        }
+        s
+    }
+
     pub fn from_xml(mode: &str) -> hard_xml::XmlResult<isize> {
-        let f: f64 = mode
+        let numeric_part = strip_unit_suffix(mode);
+        let f: f64 = numeric_part
             .parse()
             .map_err(|e: ParseFloatError| hard_xml::XmlError::FromStr(e.into()))?;
 

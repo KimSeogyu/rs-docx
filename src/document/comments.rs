@@ -26,7 +26,7 @@ pub struct Comments<'a> {
 #[xml(tag = "w:comment")]
 pub struct Comment<'a> {
     // Specifies the id of the comment.
-    #[xml(attr = "w:id")]
+    #[xml(attr = "w:id", with = "crate::rounded_float")]
     pub id: Option<isize>,
 
     #[xml(attr = "w:author")]

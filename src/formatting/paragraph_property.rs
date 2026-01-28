@@ -436,8 +436,10 @@ __define_enum! {
     TabStopType  {
         Clear = "clear", // No Tab Stop
         Left = "left", // Left Tab
+        Start = "start", // Start Tab
         Center = "center", // Centered Tab
         Right = "right", // Right Tab
+        End = "end", // End Tab
         Decimal = "decimal", // Decimal Tab
         Bar = "bar", // Bar Tab
         Num = "num", // List Tab

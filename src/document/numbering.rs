@@ -29,7 +29,7 @@ pub struct Numbering<'a> {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:abstractNum")]
 pub struct AbstractNum<'a> {
-    #[xml(attr = "w:abstractNumId")]
+    #[xml(attr = "w:abstractNumId", with = "crate::rounded_float")]
     pub abstract_num_id: Option<isize>,
     #[xml(child = "w:nsid")]
     pub nsid: Option<Nsid<'a>>,
@@ -59,7 +59,7 @@ pub struct MultiLevelType<'a> {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:lvl")]
 pub struct Level<'a> {
-    #[xml(attr = "w:ilvl")]
+    #[xml(attr = "w:ilvl", with = "crate::rounded_float")]
     pub i_level: Option<isize>,
     #[xml(child = "w:start")]
     pub start: Option<LevelStart>,
@@ -97,7 +97,7 @@ pub struct NumFmt<'a> {
 #[xml(tag = "w:start")]
 /// TODO Replace by enum NumberFormat
 pub struct LevelStart {
-    #[xml(attr = "w:val")]
+    #[xml(attr = "w:val", with = "crate::rounded_float")]
     pub value: Option<isize>,
 }
 
@@ -121,7 +121,7 @@ pub struct LevelJustification {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:num")]
 pub struct Num<'a> {
-    #[xml(attr = "w:numId")]
+    #[xml(attr = "w:numId", with = "crate::rounded_float")]
     pub num_id: Option<isize>,
     #[xml(child = "w:abstractNumId")]
     pub abstract_num_id: Option<AbstractNumId>,
@@ -133,7 +133,7 @@ pub struct Num<'a> {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:lvlOverride")]
 pub struct LevelOverride<'a> {
-    #[xml(attr = "w:ilvl")]
+    #[xml(attr = "w:ilvl", with = "crate::rounded_float")]
     pub i_level: Option<isize>,
     #[xml(child = "w:startOverride")]
     pub start_override: Option<StartOverride>,

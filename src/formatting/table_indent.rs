@@ -15,7 +15,7 @@ use crate::{__string_enum, __xml_test_suites};
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:tblInd")]
 pub struct TableIndent {
-    #[xml(attr = "w:w")]
+    #[xml(attr = "w:w", with = "crate::rounded_float")]
     pub value: Option<isize>,
     #[xml(attr = "w:type")]
     pub unit: Option<TableIndentUnit>,

@@ -35,7 +35,7 @@ pub struct NumberingProperty<'a> {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:ins")]
 pub struct InsertedProperties<'a> {
-    #[xml(attr = "w:id")]
+    #[xml(attr = "w:id", with = "crate::rounded_float")]
     pub id: Option<isize>,
     #[xml(attr = "w:author")]
     pub author: Option<Cow<'a, str>>,
@@ -47,7 +47,7 @@ pub struct InsertedProperties<'a> {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:numberingChange")]
 pub struct NumberingChange<'a> {
-    #[xml(attr = "w:id")]
+    #[xml(attr = "w:id", with = "crate::rounded_float")]
     pub id: Option<isize>,
     #[xml(attr = "w:author")]
     pub author: Option<Cow<'a, str>>,

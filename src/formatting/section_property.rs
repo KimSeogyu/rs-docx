@@ -404,9 +404,9 @@ pub struct NoEndnote {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:paperSrc")]
 pub struct PaperSource {
-    #[xml(attr = "w:first")]
+    #[xml(attr = "w:first", with = "crate::rounded_float")]
     pub first: Option<isize>,
-    #[xml(attr = "w:other")]
+    #[xml(attr = "w:other", with = "crate::rounded_float")]
     pub other: Option<isize>,
 }
 
@@ -652,7 +652,7 @@ __string_enum! {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:numStart")]
 pub struct NumStart {
-    #[xml(attr = "w:val")]
+    #[xml(attr = "w:val", with = "crate::rounded_float")]
     pub val: Option<isize>,
 }
 

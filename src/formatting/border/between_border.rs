@@ -17,9 +17,9 @@ pub struct BetweenBorder<'a> {
     pub theme_tint: Option<Cow<'a, str>>,
     #[xml(attr = "w:themeShade")]
     pub theme_shade: Option<Cow<'a, str>>,
-    #[xml(attr = "w:sz")]
+    #[xml(attr = "w:sz", with = "crate::rounded_float")]
     pub size: Option<isize>, // Measurement in Eighths of a Point
-    #[xml(attr = "w:space")]
+    #[xml(attr = "w:space", with = "crate::rounded_float")]
     pub space: Option<isize>,
     #[xml(attr = "w:shadow")]
     pub shadow: Option<bool>,

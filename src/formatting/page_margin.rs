@@ -11,19 +11,19 @@ use hard_xml::{XmlRead, XmlWrite};
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:pgMar")]
 pub struct PageMargin {
-    #[xml(attr = "w:top")]
+    #[xml(attr = "w:top", with = "crate::rounded_float")]
     pub top: Option<isize>,
-    #[xml(attr = "w:right")]
+    #[xml(attr = "w:right", with = "crate::rounded_float")]
     pub right: Option<isize>,
-    #[xml(attr = "w:bottom")]
+    #[xml(attr = "w:bottom", with = "crate::rounded_float")]
     pub bottom: Option<isize>,
-    #[xml(attr = "w:left")]
+    #[xml(attr = "w:left", with = "crate::rounded_float")]
     pub left: Option<isize>,
-    #[xml(attr = "w:header")]
+    #[xml(attr = "w:header", with = "crate::rounded_float")]
     pub header: Option<isize>,
-    #[xml(attr = "w:footer")]
+    #[xml(attr = "w:footer", with = "crate::rounded_float")]
     pub footer: Option<isize>,
-    #[xml(attr = "w:gutter")]
+    #[xml(attr = "w:gutter", with = "crate::rounded_float")]
     pub gutter: Option<isize>,
 }
 

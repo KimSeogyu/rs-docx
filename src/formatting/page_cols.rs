@@ -11,7 +11,7 @@ use hard_xml::{XmlRead, XmlWrite};
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:cols")]
 pub struct PageCols {
-    #[xml(attr = "w:space")]
+    #[xml(attr = "w:space", with = "crate::rounded_float")]
     pub space: Option<isize>,
 }
 

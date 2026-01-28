@@ -22,7 +22,7 @@ pub struct Dstrike {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:position")]
 pub struct Position {
-    #[xml(attr = "w:val")]
+    #[xml(attr = "w:val", with = "crate::rounded_float")]
     pub value: Option<isize>,
 }
 

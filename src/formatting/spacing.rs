@@ -20,17 +20,17 @@ use super::line_rule::LineRule;
 #[xml(tag = "w:spacing")]
 pub struct Spacing {
     /// Spacing Above Paragraph In Line Units
-    #[xml(attr = "w:beforeLines")]
+    #[xml(attr = "w:beforeLines", with = "crate::rounded_float")]
     pub before_lines: Option<isize>,
     /// Spacing Above Paragraph
-    #[xml(attr = "w:before")]
+    #[xml(attr = "w:before", with = "crate::rounded_float")]
     pub before: Option<isize>,
     /// Automatically Determine Spacing Above Paragraph
     #[xml(attr = "w:beforeAutospacing")]
     pub before_auto_spacing: Option<bool>,
-    #[xml(attr = "w:afterLines")]
+    #[xml(attr = "w:afterLines", with = "crate::rounded_float")]
     pub after_lines: Option<isize>,
-    #[xml(attr = "w:after")]
+    #[xml(attr = "w:after", with = "crate::rounded_float")]
     pub after: Option<isize>,
     #[xml(attr = "w:afterAutospacing")]
     pub after_auto_spacing: Option<bool>,

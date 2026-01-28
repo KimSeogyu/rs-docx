@@ -15,9 +15,9 @@ use crate::__string_enum;
 pub struct PageGrid {
     #[xml(attr = "w:type")]
     pub ty: Option<GridType>,
-    #[xml(attr = "w:linePitch")]
+    #[xml(attr = "w:linePitch", with = "crate::rounded_float")]
     pub line_pitch: Option<isize>,
-    #[xml(attr = "w:charSpace")]
+    #[xml(attr = "w:charSpace", with = "crate::rounded_float")]
     pub char_space: Option<isize>,
 }
 

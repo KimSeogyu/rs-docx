@@ -271,7 +271,7 @@ pub struct OMath {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:spacing")]
 pub struct TextSpacing {
-    #[xml(attr = "w:val")]
+    #[xml(attr = "w:val", with = "crate::rounded_float")]
     pub value: Option<isize>,
 }
 
@@ -280,8 +280,8 @@ pub struct TextSpacing {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:w")]
 pub struct Scale {
-    #[xml(attr = "w:val")]
-    pub value: Option<u16>,
+    #[xml(attr = "w:val", with = "crate::rounded_float")]
+    pub value: Option<isize>,
 }
 
 /// Measurement in Half-Points
@@ -289,7 +289,7 @@ pub struct Scale {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:szCs")]
 pub struct SizeComplex {
-    #[xml(attr = "w:val")]
+    #[xml(attr = "w:val", with = "crate::rounded_float")]
     pub value: Option<isize>,
 }
 
@@ -298,7 +298,7 @@ pub struct SizeComplex {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:kern")]
 pub struct Kern {
-    #[xml(attr = "w:val")]
+    #[xml(attr = "w:val", with = "crate::rounded_float")]
     pub value: Option<isize>,
 }
 
@@ -339,7 +339,7 @@ __string_enum! {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:eastAsianLayout")]
 pub struct EastAsianLayout {
-    #[xml(attr = "w:id")]
+    #[xml(attr = "w:id", with = "crate::rounded_float")]
     pub id: Option<isize>,
     #[xml(attr = "w:combine")]
     pub combine: Option<bool>,
@@ -377,9 +377,9 @@ __string_enum! {
 #[xml(tag = "w:fitText")]
 pub struct FitText {
     // Measurement in Twentieths of a Point
-    #[xml(attr = "w:val")]
+    #[xml(attr = "w:val", with = "crate::rounded_float")]
     pub value: Option<isize>,
-    #[xml(attr = "w:id")]
+    #[xml(attr = "w:id", with = "crate::rounded_float")]
     pub id: Option<isize>,
 }
 
@@ -397,9 +397,9 @@ pub struct TextBorder<'a> {
     pub theme_tint: Option<Cow<'a, str>>,
     #[xml(attr = "w:themeShade")]
     pub theme_shade: Option<Cow<'a, str>>,
-    #[xml(attr = "w:sz")]
+    #[xml(attr = "w:sz", with = "crate::rounded_float")]
     pub size: Option<isize>, // Measurement in Eighths of a Point
-    #[xml(attr = "w:space")]
+    #[xml(attr = "w:space", with = "crate::rounded_float")]
     pub space: Option<isize>,
     #[xml(attr = "w:shadow")]
     pub shadow: Option<bool>,

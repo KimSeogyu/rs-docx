@@ -1212,11 +1212,11 @@ __define_struct_vec! {
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "a:outerShdw")]
 pub struct OuterShadow {
-    #[xml(attr = "blurRad")]
+    #[xml(attr = "blurRad", with = "crate::rounded_float")]
     pub blur_radius: Option<isize>,
-    #[xml(attr = "dist")]
+    #[xml(attr = "dist", with = "crate::rounded_float")]
     pub distance: Option<isize>,
-    #[xml(attr = "dir")]
+    #[xml(attr = "dir", with = "crate::rounded_float")]
     pub direction: Option<isize>,
     #[xml(attr = "algn")]
     pub alignment: Option<PenAlignment>,

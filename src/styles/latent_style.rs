@@ -24,7 +24,7 @@ pub struct LatentStyle<'a> {
     pub name: Option<Cow<'a, str>>,
     #[xml(attr = "w:locked")]
     pub locked: Option<bool>,
-    #[xml(attr = "w:uiPriority")]
+    #[xml(attr = "w:uiPriority", with = "crate::rounded_float")]
     pub priority: Option<isize>,
     #[xml(attr = "w:semiHidden")]
     pub semi_hidden: Option<bool>,

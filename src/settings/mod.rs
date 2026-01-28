@@ -361,8 +361,8 @@ __string_enum! {
 pub struct Zoom {
     #[xml(attr = "w:val")]
     pub val: Option<ZoomType>,
-    #[xml(attr = "w:percent")]
-    pub percent: Option<i32>,
+    #[xml(attr = "w:percent", with = "crate::rounded_float")]
+    pub percent: Option<isize>,
 }
 
 #[derive(Debug, Default, Clone)]

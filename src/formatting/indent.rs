@@ -16,19 +16,23 @@ use crate::__xml_test_suites;
 #[cfg_attr(test, derive(PartialEq))]
 #[xml(tag = "w:ind")]
 pub struct Indent {
-    #[xml(attr = "w:leftChars")]
+    #[xml(attr = "w:leftChars", with = "crate::rounded_float")]
     pub left_chars: Option<isize>,
-    #[xml(attr = "w:left")]
+    #[xml(attr = "w:left", with = "crate::rounded_float")]
     pub left: Option<isize>,
-    #[xml(attr = "w:rightChars")]
+    #[xml(attr = "w:rightChars", with = "crate::rounded_float")]
     pub right_chars: Option<isize>,
-    #[xml(attr = "w:right")]
+    #[xml(attr = "w:right", with = "crate::rounded_float")]
     pub right: Option<isize>,
-    #[xml(attr = "w:firstLineChars")]
+    #[xml(attr = "w:start", with = "crate::rounded_float")]
+    pub start: Option<isize>,
+    #[xml(attr = "w:end", with = "crate::rounded_float")]
+    pub end: Option<isize>,
+    #[xml(attr = "w:firstLineChars", with = "crate::rounded_float")]
     pub first_line_chars: Option<isize>,
-    #[xml(attr = "w:firstLine")]
+    #[xml(attr = "w:firstLine", with = "crate::rounded_float")]
     pub first_line: Option<isize>,
-    #[xml(attr = "w:hanging")]
+    #[xml(attr = "w:hanging", with = "crate::rounded_float")]
     pub hanging: Option<isize>,
 }
 
